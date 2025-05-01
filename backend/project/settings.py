@@ -37,6 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
+    'corsheaders',
+    'rest_framework',
+    'django_vite',
 ]
 
 MIDDLEWARE = [
@@ -47,6 +51,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'project.urls'
@@ -116,6 +122,19 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR.joinpath('staticfiles', 'static')
+STATICFILES_DIRS = [
+                        BASE_DIR.joinpath('templates'),
+                        BASE_DIR.joinpath('../frontend/dist'),
+                        BASE_DIR.joinpath('templates', 'assets'),
+                    ]
+
+
+DJANGO_VITE = {
+    "DEV_MODE": DEBUG,                       # auto-detect dev server
+    "DEV_SERVER_PORT": 5173,
+    "STATIC_URL_PREFIX": STATIC_URL + "assets/",
+}
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
