@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-9h^fn*#9$j4z79)s42hh5)f9i^r%n&r6-vw)j(qu7!utzw_c!o'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 # Application definition
@@ -137,11 +137,11 @@ STATICFILES_DIRS = [
 
 DJANGO_VITE = {
     "default": {
-        "dev_mode": True,
+        "dev_mode": False,
         "dev_server_host": "localhost",
         "dev_server_port": 5173,
-        # "static_url_prefix": "static/",
-        "manifest_path": BASE_DIR.joinpath("static", "manifest.json"),
+        "static_url_prefix": "",
+        "manifest_path": BASE_DIR.joinpath("staticfiles", "manifest.json"),
     }
 }
 

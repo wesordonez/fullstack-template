@@ -8,7 +8,7 @@ export default defineConfig({
   base: "/static/",
   plugins: [react(), tailwindcss()],
   build: {
-    manifest: true,
+    manifest: 'manifest.json',
     outDir: resolve("../backend/static"),
     rollupOptions: {
       input: {
