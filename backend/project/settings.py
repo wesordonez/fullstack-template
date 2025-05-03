@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'django_vite',
+    
+    'api',
+    'styling',
 ]
 
 MIDDLEWARE = [
@@ -60,7 +63,11 @@ ROOT_URLCONF = 'project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            BASE_DIR.joinpath('templates'),
+            BASE_DIR.joinpath('../frontend/dist'),
+            BASE_DIR.joinpath('templates', 'assets'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -122,18 +129,20 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = BASE_DIR.joinpath('staticfiles', 'static')
+STATIC_ROOT = BASE_DIR.joinpath('staticfiles')
 STATICFILES_DIRS = [
-                        BASE_DIR.joinpath('templates'),
-                        BASE_DIR.joinpath('../frontend/dist'),
-                        BASE_DIR.joinpath('templates', 'assets'),
-                    ]
+    BASE_DIR.joinpath('static'),
+]
 
 
 DJANGO_VITE = {
-    "DEV_MODE": DEBUG,                       # auto-detect dev server
-    "DEV_SERVER_PORT": 5173,
-    "STATIC_URL_PREFIX": STATIC_URL + "assets/",
+    "default": {
+        "dev_mode": True,
+        "dev_server_host": "localhost",
+        "dev_server_port": 5173,
+        # "static_url_prefix": "static/",
+        "manifest_path": BASE_DIR.joinpath("static", "manifest.json"),
+    }
 }
 
 # Default primary key field type

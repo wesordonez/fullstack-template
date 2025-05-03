@@ -1,10 +1,17 @@
-<!-- backend/templates/base.html -->
-{% load vite %}
-<!doctype html>
+{% load django_vite %}
+
+<!DOCTYPE html>
 <html lang="en">
-  <head><meta charset="utf-8"><title>My Stack</title></head>
-  <body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django + React App</title>
+    {% vite_hmr_client %}
+    {% vite_asset "src/main.jsx" %}
+</head>
+<body>
     <div id="root"></div>
-    {% vite "src/main.jsx" %}
-  </body>
+    {% block content %}
+    {% endblock %}
+</body>
 </html>
