@@ -1,19 +1,18 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import Header from './components/Header'
+import Hero from './components/Hero'
+import About from './components/About'
+import Footer from './components/Footer'
 import './App.css'
 
 function App() {
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg shadow-md">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4">
-          Django + React + Vite + Tailwind
-        </h1>
-        <p className="text-gray-600">
-          Your fullstack application is ready! is this working? safaf
-        </p>
-      </div>
+    <div className="min-h-screen flex flex-col bg-gray-50">
+      <Header />
+      <main className="flex-grow">
+        <Hero />
+        <About />
+      </main>
+      <Footer />
     </div>
   )
 }
