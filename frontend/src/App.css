@@ -1,3 +1,5 @@
+/* App.css not used unless you want to add custom styles to components
+
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -157,4 +159,4 @@
   body {
     @apply bg-background text-foreground;
   }
-}
+} */
