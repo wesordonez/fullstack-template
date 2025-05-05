@@ -11,52 +11,72 @@ import {
   PopoverPanel,
 } from '@headlessui/react'
 import {
-  ArrowPathIcon,
   Bars3Icon,
-  ChartPieIcon,
-  CursorArrowRaysIcon,
-  FingerPrintIcon,
-  SquaresPlusIcon,
   XMarkIcon,
+  EnvelopeIcon,
+  SparklesIcon,
+  GlobeAltIcon,
+  ChatBubbleLeftRightIcon,
+  DocumentTextIcon,
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
+import { Switch } from '@/components/ui/switch'
+import { Label } from '@/components/ui/label'
 
 const products = [
-  { name: 'Analytics', description: 'Get a better understanding of your traffic', href: '#', icon: ChartPieIcon },
-  { name: 'Engagement', description: 'Speak directly to your customers', href: '#', icon: CursorArrowRaysIcon },
-  { name: 'Security', description: 'Your customers data will be safe and secure', href: '#', icon: FingerPrintIcon },
-  { name: 'Integrations', description: 'Connect with third-party tools', href: '#', icon: SquaresPlusIcon },
-  { name: 'Automations', description: 'Build strategic funnels that will convert', href: '#', icon: ArrowPathIcon },
+  {
+    name: 'Hero Section',
+    description: 'A bold introduction to your site and what you do.',
+    href: '#hero',
+    icon: SparklesIcon,
+  },
+  {
+    name: 'Features Section',
+    description: 'Showcase your site\'s key features and benefits.',
+    href: '#features',
+    icon: GlobeAltIcon,
+  },
+  {
+    name: 'Contact Form',
+    description: 'Let users reach out directly from your site.',
+    href: '#contact',
+    icon: EnvelopeIcon,
+  },
+  {
+    name: 'Call To Action Section',
+    description: 'Prompt users to take the next step with a clear and impactful Call to Action (CTA).',
+    href: '#cta',
+    icon: ChatBubbleLeftRightIcon,
+  },
+  {
+    name: 'Footer Section',
+    description: 'Wrap up your site with links and copyright info.',
+    href: '#footer',
+    icon: DocumentTextIcon,
+  },
 ]
 const callsToAction = [
-  { name: 'Watch demo', href: '#', icon: PlayCircleIcon },
-  { name: 'Contact sales', href: '#', icon: PhoneIcon },
+  { name: 'Watch demo', href: '#features', icon: PlayCircleIcon },
+  { name: 'Contact sales', href: '#contact', icon: PhoneIcon },
 ]
 
 function ThemeToggle() {
   const [dark, setDark] = useState(() =>
     typeof window !== 'undefined' ? document.documentElement.classList.contains('dark') : false
   )
-  const toggleTheme = () => {
-    setDark((prev) => {
-      const next = !prev
-      if (next) {
-        document.documentElement.classList.add('dark')
-      } else {
-        document.documentElement.classList.remove('dark')
-      }
-      return next
-    })
+  const toggleTheme = (checked) => {
+    setDark(checked)
+    if (checked) {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
   }
   return (
-    <button
-      onClick={toggleTheme}
-      aria-label="Toggle dark mode"
-      className="ml-4 p-2 rounded-full border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-xl transition"
-      type="button"
-    >
-      {dark ? '🌙' : '☀️'}
-    </button>
+    <div className="ml-4 flex items-center gap-2">
+      <Switch checked={dark} onCheckedChange={toggleTheme} aria-label="Toggle dark mode" />
+      <Label htmlFor="dark-mode-toggle">Dark Mode</Label>
+    </div>
   )
 }
 
@@ -132,14 +152,14 @@ export default function Header() {
             </PopoverPanel>
           </Popover>
 
-          <a href="#" className="text-sm/6 font-semibold text-gray-900 dark:text-gray-100">
+          <a href="#features" className="text-sm/6 font-semibold text-gray-900 dark:text-gray-100">
             Features
           </a>
-          <a href="#" className="text-sm/6 font-semibold text-gray-900 dark:text-gray-100">
-            Marketplace
+          <a href="#contact" className="text-sm/6 font-semibold text-gray-900 dark:text-gray-100">
+            Contact
           </a>
-          <a href="#" className="text-sm/6 font-semibold text-gray-900 dark:text-gray-100">
-            Company
+          <a href="#footer" className="text-sm/6 font-semibold text-gray-900 dark:text-gray-100">
+            Footer
           </a>
         </PopoverGroup>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
@@ -190,22 +210,22 @@ export default function Header() {
                   </DisclosurePanel>
                 </Disclosure>
                 <a
-                  href="#"
+                  href="#features"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800"
                 >
                   Features
                 </a>
                 <a
-                  href="#"
+                  href="#contact"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800"
                 >
-                  Marketplace
+                  Contact
                 </a>
                 <a
-                  href="#"
+                  href="#footer"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800"
                 >
-                  Company
+                  Footer
                 </a>
               </div>
               <div className="py-6">
