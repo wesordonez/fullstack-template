@@ -168,9 +168,9 @@ export default function Header() {
           <Link to="/about" className="text-sm/6 font-semibold text-gray-900 dark:text-gray-100 hover:text-accent dark:hover:text-accent">
             About
           </Link>
-          <a href="#" className="text-sm/6 font-semibold text-gray-900 dark:text-gray-100 hover:text-accent dark:hover:text-accent">
+          <Link to="/contact" className="text-sm/6 font-semibold text-gray-900 dark:text-gray-100 hover:text-accent dark:hover:text-accent">
             Contact
-          </a>
+          </Link>
         </PopoverGroup>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <ThemeToggle />
@@ -224,12 +224,12 @@ export default function Header() {
                 >
                   Features
                 </button>
-                <button
-                  onClick={() => handleSectionClick('contact')}
-                  className="-mx-3 block w-full text-left rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800"
+                <Link
+                  to="/contact"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800"
                 >
                   Contact
-                </button>
+                </Link>
                 <button
                   onClick={() => handleSectionClick('footer')}
                   className="-mx-3 block w-full text-left rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800"
