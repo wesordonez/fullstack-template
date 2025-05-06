@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import {
   Dialog,
   DialogPanel,
@@ -25,6 +26,7 @@ import { Label } from '@/components/ui/label'
 import duLogoBlack from '@/assets/logos/du-logo-black.png'
 import duLogoWhite from '@/assets/logos/du-logo-white.png'
 import { useTheme } from '@/context/ThemeContext'
+import { scrollToSection } from '@/utils/scrollToSection'
 
 const products = [
   {
@@ -76,19 +78,37 @@ function ThemeToggle() {
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const { isDark } = useTheme()
+  const navigate = useNavigate()
+
+  const handleSectionClick = (sectionId) => {
+    // Close mobile menu if open
+    setMobileMenuOpen(false)
+    
+    // If we're not on the home page, navigate there first
+    if (window.location.pathname !== '/') {
+      console.log('navigating to home')
+      navigate('/')
+      // Wait for navigation to complete before scrolling
+      setTimeout(() => scrollToSection(sectionId), 100)
+    } else {
+      // If we're already on home page, just scroll
+      console.log('scrolling to section', sectionId)
+      scrollToSection(sectionId)
+    }
+  }
 
   return (
     <header className="bg-white dark:bg-gray-900">
       <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
         <div className="flex lg:flex-1">
-          <a href="#" className="-m-1.5 p-1.5">
+          <Link to="/" className="-m-1.5 p-1.5">
             <span className="sr-only">Dunosis LLC</span>
             <img
               alt="Dunosis Logo"
               src={isDark ? duLogoWhite : duLogoBlack}
               className="h-8 w-auto"
             />
-          </a>
+          </Link>
         </div>
         <div className="flex lg:hidden">
           <button
@@ -145,9 +165,9 @@ export default function Header() {
             </PopoverPanel>
           </Popover>
 
-          <a href="#" className="text-sm/6 font-semibold text-gray-900 dark:text-gray-100 hover:text-accent dark:hover:text-accent">
+          <Link to="/about" className="text-sm/6 font-semibold text-gray-900 dark:text-gray-100 hover:text-accent dark:hover:text-accent">
             About
-          </a>
+          </Link>
           <a href="#" className="text-sm/6 font-semibold text-gray-900 dark:text-gray-100 hover:text-accent dark:hover:text-accent">
             Contact
           </a>
@@ -160,14 +180,14 @@ export default function Header() {
         <div className="fixed inset-0 z-10" />
         <DialogPanel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white dark:bg-gray-900 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
-            <a href="#" className="-m-1.5 p-1.5">
+            <Link to="/" className="-m-1.5 p-1.5">
               <span className="sr-only">Dunosis LLC</span>
               <img
                 alt=""
                 src={isDark ? duLogoWhite : duLogoBlack}
                 className="h-8 w-auto"
               />
-            </a>
+            </Link>
             <button
               type="button"
               onClick={() => setMobileMenuOpen(false)}
@@ -198,24 +218,24 @@ export default function Header() {
                     ))}
                   </DisclosurePanel>
                 </Disclosure>
-                <a
-                  href="#features"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800"
+                <button
+                  onClick={() => handleSectionClick('features')}
+                  className="-mx-3 block w-full text-left rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800"
                 >
                   Features
-                </a>
-                <a
-                  href="#contact"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800"
+                </button>
+                <button
+                  onClick={() => handleSectionClick('contact')}
+                  className="-mx-3 block w-full text-left rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800"
                 >
                   Contact
-                </a>
-                <a
-                  href="#footer"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800"
+                </button>
+                <button
+                  onClick={() => handleSectionClick('footer')}
+                  className="-mx-3 block w-full text-left rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800"
                 >
                   Footer
-                </a>
+                </button>
               </div>
               <div className="py-6">
                 <ThemeToggle />
