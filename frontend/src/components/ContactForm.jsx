@@ -2,19 +2,43 @@ import React, { useState } from 'react'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Button } from '@/components/ui/button'
+import { validateEmail, validatePhone } from '@/utils/validation'
 
 export default function ContactForm() {
   const [form, setForm] = useState({ name: '', phone: '', email: '', message: '' })
+  const [errors, setErrors] = useState({ email: '', phone: '' })
   const [submitted, setSubmitted] = useState(false)
 
   function handleChange(e) {
-    setForm({ ...form, [e.target.name]: e.target.value })
+    const { name, value } = e.target
+    setForm({ ...form, [name]: value })
+    // Clear errors when user types
+    if (errors[name]) {
+      setErrors({ ...errors, [name]: '' })
+    }
   }
 
   function handleSubmit(e) {
     e.preventDefault()
-    // Here you would send the form data to your backend API
-    setSubmitted(true)
+    let hasErrors = false
+    const newErrors = { email: '', phone: '' }
+
+    if (!validateEmail(form.email)) {
+      newErrors.email = 'Please enter a valid email address'
+      hasErrors = true
+    }
+
+    if (!validatePhone(form.phone)) {
+      newErrors.phone = 'Please enter a valid phone number (at least 10 digits)'
+      hasErrors = true
+    }
+
+    setErrors(newErrors)
+
+    if (!hasErrors) {
+      // Here you would send the form data to your backend API
+      setSubmitted(true)
+    }
   }
 
   return (
@@ -40,6 +64,7 @@ export default function ContactForm() {
           onChange={handleChange}
           className="bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100"
         />
+        {errors.phone && <p className="text-red-500 text-sm">{errors.phone}</p>}
         <Input
           name="email"
           type="email"
@@ -49,6 +74,7 @@ export default function ContactForm() {
           required
           className="bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100"
         />
+        {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
         <Textarea
           name="message"
           placeholder="Message"
