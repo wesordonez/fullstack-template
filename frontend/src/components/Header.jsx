@@ -145,14 +145,11 @@ export default function Header() {
             </PopoverPanel>
           </Popover>
 
-          <a href="#features" className="text-sm/6 font-semibold text-gray-900 dark:text-gray-100 hover:text-accent dark:hover:text-accent">
-            Features
+          <a href="#" className="text-sm/6 font-semibold text-gray-900 dark:text-gray-100 hover:text-accent dark:hover:text-accent">
+            About
           </a>
-          <a href="#contact" className="text-sm/6 font-semibold text-gray-900 dark:text-gray-100 hover:text-accent dark:hover:text-accent">
+          <a href="#" className="text-sm/6 font-semibold text-gray-900 dark:text-gray-100 hover:text-accent dark:hover:text-accent">
             Contact
-          </a>
-          <a href="#footer" className="text-sm/6 font-semibold text-gray-900 dark:text-gray-100 hover:text-accent dark:hover:text-accent">
-            Footer
           </a>
         </PopoverGroup>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">

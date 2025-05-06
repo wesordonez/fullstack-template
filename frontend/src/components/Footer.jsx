@@ -3,7 +3,7 @@ import duLogo from '@/assets/logos/du-logo-full.png'
 
 const Footer = () => (
   
-<footer id="footer" className="block bg-gray-50 dark:bg-gray-900">
+<footer id="footer" className="block bg-white dark:bg-gray-900">
   <div className="py-16 md:py-20 mx-auto w-full max-w-7xl px-5 md:px-10">
     <div className="flex-col flex items-center">
       <a href="javascript:void(0);" className="mb-8 inline-block max-w-full text-black dark:text-gray-100">
