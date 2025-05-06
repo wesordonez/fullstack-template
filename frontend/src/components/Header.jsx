@@ -22,6 +22,9 @@ import {
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
 import { Switch } from '@/components/ui/switch'
 import { Label } from '@/components/ui/label'
+import duLogoBlack from '@/assets/logos/du-logo-black.png'
+import duLogoWhite from '@/assets/logos/du-logo-white.png'
+import { useTheme } from '@/context/ThemeContext'
 
 const products = [
   {
@@ -61,37 +64,28 @@ const callsToAction = [
 ]
 
 function ThemeToggle() {
-  const [dark, setDark] = useState(() =>
-    typeof window !== 'undefined' ? document.documentElement.classList.contains('dark') : false
-  )
-  const toggleTheme = (checked) => {
-    setDark(checked)
-    if (checked) {
-      document.documentElement.classList.add('dark')
-    } else {
-      document.documentElement.classList.remove('dark')
-    }
-  }
+  const { isDark, toggleTheme } = useTheme()
   return (
     <div className="ml-4 flex items-center gap-2">
-      <Switch checked={dark} onCheckedChange={toggleTheme} aria-label="Toggle dark mode" />
-      <Label htmlFor="dark-mode-toggle">Dark Mode</Label>
+      <Switch checked={isDark} onCheckedChange={toggleTheme} aria-label="Toggle dark mode" />
+      <Label htmlFor="dark-mode-toggle">Light/Dark Mode</Label>
     </div>
   )
 }
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const { isDark } = useTheme()
 
   return (
     <header className="bg-white dark:bg-gray-900">
       <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
         <div className="flex lg:flex-1">
           <a href="#" className="-m-1.5 p-1.5">
-            <span className="sr-only">Your Company</span>
+            <span className="sr-only">Dunosis LLC</span>
             <img
-              alt=""
-              src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600"
+              alt="Dunosis Logo"
+              src={isDark ? duLogoWhite : duLogoBlack}
               className="h-8 w-auto"
             />
           </a>
