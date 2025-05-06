@@ -18,25 +18,27 @@ export default function ContactForm() {
   }
 
   return (
-    <section className="py-16 bg-white flex justify-center">
+    <section id="contact" className="py-16 bg-gray-50 dark:bg-gray-900 flex justify-center">
       <form
         onSubmit={handleSubmit}
-        className="w-full max-w-lg bg-gray-50 p-8 rounded-xl shadow-md flex flex-col gap-6"
+        className="w-full max-w-lg bg-gray-50 dark:bg-gray-800 p-8 rounded-xl shadow-md flex flex-col gap-6 border border-gray-200 dark:border-gray-700"
       >
-        <h2 className="text-2xl font-bold text-gray-900 mb-2">Contact Us</h2>
-        <p className="text-gray-600 mb-4">We'd love to hear from you. Fill out the form below and we'll get back to you soon.</p>
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">Contact Us Form</h2>
+        <p className="text-gray-600 dark:text-gray-300 mb-4">This form is not connected to the django backend API (yet!). It is just a placeholder for the contact form.</p>
         <Input
           name="name"
           placeholder="Name"
           value={form.name}
           onChange={handleChange}
           required
+          className="bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100"
         />
         <Input
           name="phone"
           placeholder="Phone"
           value={form.phone}
           onChange={handleChange}
+          className="bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100"
         />
         <Input
           name="email"
@@ -45,6 +47,7 @@ export default function ContactForm() {
           value={form.email}
           onChange={handleChange}
           required
+          className="bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100"
         />
         <Textarea
           name="message"
@@ -53,10 +56,11 @@ export default function ContactForm() {
           onChange={handleChange}
           rows={4}
           required
+          className="bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100"
         />
-        <Button type="submit" className="w-full">Send Message</Button>
+        <Button type="submit" className="w-full text-gray-100 bg-accent dark:bg-accent hover:bg-white hover:text-accent dark:hover:bg-gray-900 dark:hover:text-accent border-2 border-accent dark:border-accent transition-colors">Send Message</Button>
         {submitted && (
-          <div className="text-green-600 text-center mt-2">Thank you! Your message has been sent.</div>
+          <div className="text-green-600 dark:text-green-400 text-center mt-2">Thank you! Your message has been sent.</div>
         )}
       </form>
     </section>

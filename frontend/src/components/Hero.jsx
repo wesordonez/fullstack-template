@@ -3,7 +3,7 @@ import { ArrowUpRightIcon } from '@heroicons/react/24/outline'
 import duHeroImage from '@/assets/images/du-hero.png'
 
 const Hero = () => (
-  <section id="hero">
+  <section id="hero" className="bg-gray-50 dark:bg-gray-900">
 		  {/* Hero Container */}
 		  <div className="mx-auto w-full max-w-7xl px-5 py-16 md:px-8 md:py-20">
 		    {/* Component */}
