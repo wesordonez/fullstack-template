@@ -68,7 +68,7 @@ function ThemeToggle() {
   return (
     <div className="ml-4 flex items-center gap-2">
       <Switch checked={isDark} onCheckedChange={toggleTheme} aria-label="Toggle dark mode" />
-      <Label htmlFor="dark-mode-toggle">Light/Dark Mode</Label>
+      <span>{isDark ? '🌙' : '☀️'}</span>
     </div>
   )
 }
@@ -102,7 +102,7 @@ export default function Header() {
         </div>
         <PopoverGroup className="hidden lg:flex lg:gap-x-12">
           <Popover className="relative">
-            <PopoverButton className="flex bg-red-500 items-center gap-x-1 text-sm/6 font-semibold text-gray-900 dark:text-gray-100">
+            <PopoverButton className="flex items-center gap-x-1 text-sm/6 font-semibold text-gray-900 dark:text-gray-100 hover:text-accent dark:hover:text-accent">
               Home
               <ChevronDownIcon aria-hidden="true" className="size-5 flex-none text-gray-400" />
             </PopoverButton>
@@ -145,13 +145,13 @@ export default function Header() {
             </PopoverPanel>
           </Popover>
 
-          <a href="#features" className="text-sm/6 font-semibold text-gray-900 dark:text-gray-100">
+          <a href="#features" className="text-sm/6 font-semibold text-gray-900 dark:text-gray-100 hover:text-accent dark:hover:text-accent">
             Features
           </a>
-          <a href="#contact" className="text-sm/6 font-semibold text-gray-900 dark:text-gray-100">
+          <a href="#contact" className="text-sm/6 font-semibold text-gray-900 dark:text-gray-100 hover:text-accent dark:hover:text-accent">
             Contact
           </a>
-          <a href="#footer" className="text-sm/6 font-semibold text-gray-900 dark:text-gray-100">
+          <a href="#footer" className="text-sm/6 font-semibold text-gray-900 dark:text-gray-100 hover:text-accent dark:hover:text-accent">
             Footer
           </a>
         </PopoverGroup>
