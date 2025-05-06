@@ -10,9 +10,9 @@ const logos = [
 
 export default function Features() {
   return (
-    <section className="py-20 bg-gray-50 text-center">
-      <h2 className="text-4xl font-bold text-gray-900 mb-4">Powerful Features</h2>
-      <p className="text-lg text-gray-600 mb-10 max-w-2xl mx-auto">
+    <section id="features" className="py-20 bg-gray-50 dark:bg-gray-900 text-center">
+      <h2 className="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">Powerful Features</h2>
+      <p className="text-lg text-gray-600 dark:text-gray-400 mb-10 max-w-2xl mx-auto">
         Build modern, scalable web apps with a best-in-class stack: Django, React, Vite, and Tailwind CSS.
       </p>
       <div className="flex justify-center my-8">
